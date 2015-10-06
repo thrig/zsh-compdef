@@ -31,3 +31,19 @@ not work.")
   https://github.com/thrig/sial.org-scripts
 
   or one or the other of my Perl modules (see github, CPAN).
+
+* A loop for testing new completions might look something like:
+
+      echo 'print -z "foo "' >> ~/.zshrc
+
+  And then while editing the completion for _foo, in the test shell,
+
+      rm ~/.zcompdump; exec zsh
+
+  Which thanks to the `print -z` should get you something you can then
+  mash tab on in the test shell. Though this will interfere with other
+  starts of interactive shells, so may need:
+
+      [[ $DOZPRINT = 'y' ]] && print -z ...
+
+  And then `DOZPRINT=y exec zsh` to get the canned text in the new shell.
