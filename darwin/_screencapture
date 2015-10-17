@@ -1,0 +1,33 @@
+#compdef screencapture
+#
+# ZSH completion for Mac OS X screencapture(1) as of Mac OS X 10.11. (Via
+# `screencapture -h` as the man page option is incomplete.)
+
+# NOTE -P at least then *requires* a file, unless -c was also specified,
+# in which case -P and the file then do nothing?
+#
+# TODO could complete on screenrect and probably also lookup bundleid from
+# somewhere, but that's more work
+_arguments -s -S \
+  '-c[capture to clipboard]' \
+  '-C[capture includes cursor]' \
+  '-d[display graphical errors]' \
+  '-i[interactive ctrl=>clipboard,space=>toggle mouse/window]' \
+  '(-i)-m[only capture main monitor]' \
+  '(-c -P)-M[send file to new mail message]' \
+  '-o[omit shadow of window]' \
+  '(-c -M)-P[send file to Preview.app]' \
+  '(-w)-s[allow only mouse selection mode]' \
+  '-S[capture screen not window]' \
+  '-t+[image type]:format:(png jpg tiff)' \
+  '-T+[timed delay (seconds)]:delay:(5 10 15)' \
+  '(-s)-w[allow only window selection mode]' \
+  '-W[start in window selection mode]' \
+  '-x[no sounds]' \
+  '-a[omit attached windows]' \
+  '-r[omit dpi metadata]' \
+  '-l+[windowsid]:windowsid:' \
+  '-R+[specify screenrect x,y,w,h]:screenrect:' \
+  '-B+[open output in app of given bundleid]:bundleid:' \
+  '*:file:_files' \
+  && return 0
