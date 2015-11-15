@@ -19,6 +19,6 @@ _arguments -s \
   '(--help -h)--show-code[only show R code]' \
   '(--help -h)--show-stdout[emit stdout from R]' \
   '(- *)'{-h,--help}'[display help]' \
-  '1:arlet:_files -g "*.rt(:rt)" -W $adir' \
+  '1:arlet:_files -g "[a-z]*~*.*" -W $adir' \
   '*:files:_files' \
   && return 0
