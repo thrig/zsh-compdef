@@ -1,0 +1,16 @@
+#compdef ps2lpd
+
+# Simple LPD client for lobbing Postscript or such at LPD servers
+#
+# elsewhere, if necessary, set printers (possibly in .zshrc):
+#
+#   typeset -a printers
+#   printers=(gutenberg bisheng ...)
+
+_arguments \
+  '(- *)-h[display help and exit]' \
+  {--format=,-f=}'[o=postscript, l=text leaving ctrl chars]:format:(f l o)' \
+  {--queue=,-q=}'[print queue]:queue:' \
+  '1:printer:_values "printers" $printers' \
+  '2:file:_files' \
+  && return 0
