@@ -1,0 +1,17 @@
+#compdef rdcomm
+
+local ret=1
+
+local devdir
+devdir=${RDCOMM_DEV_DIR:-/dev}
+
+_arguments -s -w \
+  '-B[baud]:baud:(9600 115200)' \
+  '(-u)-l[line buffer stdout]' \
+  '-r[raw output (special chars not replaced with .)]' \
+  '(-l)-u[unbuffer stdout]' \
+  '(- *)-h[display help]' \
+  '1:devicename:_files -g "$devdir/*"' \
+  && ret=0
+
+return $ret
