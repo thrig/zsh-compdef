@@ -3,15 +3,17 @@
 local ret=1
 
 local devdir
+# set this if you have something like udev dropping the devs used into
+# some custom directory for easier tabbing
 devdir=${RDCOMM_DEV_DIR:-/dev}
 
 _arguments -s -w \
   '-B[baud]:baud:(9600 115200)' \
-  '(-u)-l[line buffer stdout]' \
+  '-e[TCL expression]:tcl:' \
+  '-M[minimum read]:minread:' \
   '-r[raw output (special chars not replaced with .)]' \
-  '(-l)-u[unbuffer stdout]' \
   '(- *)-h[display help]' \
-  '1:devicename:_files -g "$devdir/*"' \
+  '1:devicename:_files -W $devdir' \
   && ret=0
 
 return $ret
