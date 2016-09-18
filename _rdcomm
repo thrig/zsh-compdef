@@ -9,9 +9,13 @@ devdir=${RDCOMM_DEV_DIR:-/dev}
 
 _arguments -s -w \
   '-B[baud]:baud:(9600 115200)' \
+  '-C[do not strip carriage returns]' \
   '-e[TCL expression]:tcl:' \
+  '-I[bit size]:bits:(5 6 7 8)' \
   '-M[minimum read]:minread:' \
+  '-P[parity]:parity:(0 1 2)' \
   '-r[raw output (special chars not replaced with .)]' \
+  '-S[two stop bits]' \
   '(- *)-h[display help]' \
   '1:devicename:_files -W $devdir' \
   && ret=0
