@@ -1,9 +1,11 @@
 #compdef timeout
+#
+# this is for my timeout (not the coreutils one)
 
 _arguments \
-  '(- *)'{-h,--help}'[display help and exit]' \
-  {-q,--quiet}'[emit fewer messages]' \
-  {-v,--verbose}'[emit more messages]' \
+  '-F[wait for full duration]' \
+  '-q[emit fewer messages]' \
+  '(- *)'-h'[display help and exit]' \
   '1:duration:' \
   '2:command: _command_names -e' \
   '*::arguments: _normal'

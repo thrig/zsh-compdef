@@ -1,11 +1,11 @@
 #compdef r-fu
 #
-# ZSH completion script for r-fu. See https://github.com/thrig/zsh-compdef for
-# more information on how to set this up in ZSH. This code, r-fu, and where the
-# contents of the arlet directory get installed to probably should all agree.
+# ZSH completion script for r-fu. This code, r-fu, and where the
+# contents of the arlet directory get installed to probably should
+# all agree.
 #
-# This program is free software; you can redistribute it and/or modify it under
-# the same terms as Perl itself.
+# This program is free software; you can redistribute it and/or modify
+# it under the same terms as Perl itself.
 
 local adir
 adir=${ARLET_DIR:-~/share/arlets}
@@ -14,11 +14,14 @@ adir=${ARLET_DIR:-~/share/arlets}
 # arlet files. Easy would be a 'usage' line in the arlet.conf that r-fu could
 # emit when anything goes awry.
 _arguments -s \
-  '(--help -h)--width=[graph width]:value:' \
-  '(--help -h)--height=[graph height]:value:' \
-  '(--help -h)--show-code[only show R code]' \
-  '(--help -h)--show-stdout[emit stdout from R]' \
-  '(- *)'{-h,--help}'[display help]' \
+  '(--all-help --help -h)--column=[column to select]:value:(1)' \
+  '(--all-help --help -h)--height=[graph height]:value:' \
+  '(--all-help --help -h)--p-value=[p-value]:value:(0.05)' \
+  '(--all-help --help -h)--show-code[only show R code]' \
+  '(--all-help --help -h)--show-stdout[emit stdout from R]' \
+  '(--all-help --help -h)--width=[graph width]:value:' \
+  '(- *)'{-h,--help}'[display help for arlet]' \
+  '(- *)'{--all-help}'[display help for all arlets]' \
   '1:arlet:_files -g "[a-z]*~*.*" -W $adir' \
   '*:files:_files' \
   && return 0
