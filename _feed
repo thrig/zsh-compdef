@@ -9,10 +9,6 @@
 
 local curcontext="$curcontext" state ret=1
 
-# TODO _files-or-a-hyphen-for-stdin instead of just _files
-# hurm completion wrong, with "/etc/passwd" as the filename it picks up on
-# user accounts?! so instead adapt the CVS subcommand method simplified
-# to just call one "subcommand" that is the foreign program to be run?
 _arguments \
   '1:file:->filesorstdin' \
   '2:command: _command_names -e' \
