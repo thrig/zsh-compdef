@@ -1,6 +1,10 @@
 #compdef timeout
 #
-# this is for my timeout (not the coreutils one)
+# this is for my timeout (not the coreutils one). see also the _feed
+# completion for a more complicated use of $state. if your program only
+# has flags, then see the ZSH _xargs completion for a simpler solution.
+
+local curcontext="$curcontext" state ret=1
 
 _arguments \
   '-F[wait for full duration]' \
@@ -8,4 +12,12 @@ _arguments \
   '(- *)'-h'[display help and exit]' \
   '1:duration:' \
   '2:command: _command_names -e' \
-  '*::arguments: _normal'
+  '*::args:->command' && ret=0
+
+if [[ -n "$state" ]]; then
+  shift 1 words
+  (( CURRENT-- ))
+  _normal && ret=0
+fi
+
+return ret

@@ -2,13 +2,36 @@
 #
 # For my CLI or EDITOR file to REPL replayer/interactor util. Will likey
 # need something like the following zstyle lines set in .zshrc to
-# complete only on the REPL known to feed:
+# complete only specific REPL:
 #
-#   zstyle ':completion:*:*:feed:*:commands' fake-always clisp sbcl tclsh expect wish perl tinyrepl gdb
+#   zstyle ':completion:*:*:feed:*:commands' fake-always clisp expect gdb perl sbcl tclsh tinyrepl wish zsh
 #   zstyle ':completion:*:*:feed:*:commands' ignored-patterns '*'
 
+local curcontext="$curcontext" state ret=1
+
 # TODO _files-or-a-hyphen-for-stdin instead of just _files
+# hurm completion wrong, with "/etc/passwd" as the filename it picks up on
+# user accounts?! so instead adapt the CVS subcommand method simplified
+# to just call one "subcommand" that is the foreign program to be run?
 _arguments \
-  '1:file:_files' \
+  '1:file:->filesorstdin' \
   '2:command: _command_names -e' \
-  '*::arguments: _normal'
+  '*::args:->command' && ret=0
+
+case "$state" in
+  filesorstdin)
+    # if appear to be being piped to, complete stdin (-) as filename
+    if [[ $BUFFER =~ "\|[[:blank:]]*feed" ]]; then
+      _values 'stdin' - && ret=0
+    else
+      _files && ret=0
+    fi
+  ;;
+  command)
+    shift 1 words
+    (( CURRENT-- ))
+    _normal && ret=0
+  ;;
+esac
+
+return ret
