@@ -21,7 +21,7 @@ _arguments -s \
   '(--all-help --help -h)--show-stdout[emit stdout from R]' \
   '(--all-help --help -h)--width=[graph width]:value:' \
   '(- *)'{-h,--help}'[display help for arlet]' \
-  '(- *)'{--all-help}'[display help for all arlets]' \
+  '(- *)--all-help[display help for all arlets]' \
   '1:arlet:_files -g "[a-z]*~*.*" -W $adir' \
   '*:files:_files' \
   && return 0
