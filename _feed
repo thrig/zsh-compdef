@@ -17,7 +17,7 @@ _arguments \
 case "$state" in
   filesorstdin)
     # if appear to be being piped to, complete stdin (-) as filename
-    if [[ $BUFFER =~ "\|[[:blank:]]*feed" ]]; then
+    if [[ $BUFFER =~ "\|[[:blank:]]*$_comp_command" ]]; then
       _values 'stdin' - && ret=0
     else
       _files && ret=0

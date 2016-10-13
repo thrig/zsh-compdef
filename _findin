@@ -1,0 +1,23 @@
+#compdef findin
+
+local curcontext="$curcontext" state ret=1
+
+_arguments -s \
+  '(-h)-0[NUL separate the input and ouput]' \
+  '(-h)-q[emit fewer messages]' \
+  '(- *)-h[show help]' \
+  '1:glob:' \
+  '2:env:->envorstdin' && ret=0
+
+case "$state" in
+  envorstdin)
+    # if appear to be being piped to, complete stdin
+    if [[ $BUFFER =~ "\|[[:blank:]]*$_comp_command" ]]; then
+      _values 'stdin' - && ret=0
+    else
+      compadd ${(k)parameters[(R)*export*]} && ret=0
+    fi
+  ;;
+esac
+
+return ret
