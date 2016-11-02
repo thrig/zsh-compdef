@@ -20,6 +20,8 @@ _arguments -s \
   '(--all-help --help -h)--show-code[only show R code]' \
   '(--all-help --help -h)--show-stdout[emit stdout from R]' \
   '(--all-help --help -h)--width=[graph width]:value:' \
+  '(--all-help --help -h)--xlabel=[graph x-label]:value:' \
+  '(--all-help --help -h)--ylabel=[graph y-label]:value:' \
   '(- *)'{-h,--help}'[display help for arlet]' \
   '(- *)--all-help[display help for all arlets]' \
   '1:arlet:_files -g "[a-z]*~*.*" -W $adir' \
