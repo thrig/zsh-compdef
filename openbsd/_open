@@ -1,6 +1,0 @@
-#compdef open
-#
-# Mask the zsh-default _open on OpenBSD with one suitable for my open(1)
-# on such.
-
-_arguments '1:file:_files' && return 0

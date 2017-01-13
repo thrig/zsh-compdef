@@ -13,7 +13,7 @@ adir=${ARLET_DIR:-~/share/arlets}
 # More complexity would be required to specify completions for the individual
 # arlet files. Easy would be a 'usage' line in the arlet.conf that r-fu could
 # emit when anything goes awry.
-_arguments -s \
+_arguments \
   '(--all-help --help -h)--column=[column to select]:value:(1)' \
   '(--all-help --help -h)--height=[graph height]:value:' \
   '(--all-help --help -h)--p-value=[p-value]:value:(0.05)' \

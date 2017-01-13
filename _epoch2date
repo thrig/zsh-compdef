@@ -4,9 +4,6 @@ local ret=1
 
 _arguments \
   '-f+[output strftime format]:strftime:' \
-  '(-g)-l[localtime]' \
-  '(-l)-g[gmtime]' \
-  '-r+[epoch regex kluge]:epochregex:' \
   '*:epoch:' \
   && ret=0
 

@@ -1,10 +1,28 @@
 #compdef repod
 
-local ret=1
+local curcontext="$curcontext" state ret=1
 
 _arguments \
   '1:target:(github init remote)' \
-  '2:hostname:' \
+  '2:hostname:->host' \
   && ret=0
+
+case "$state" in
+  host)
+    if [[ $line[1] == github ]]; then
+      _message 'no hostname completion for github'
+    else
+      # e.g. set
+      #   repodhosts=( aliasa aliasb )
+      # in .zshrc as git hosts may likely be a subset of the full hosts
+      # completion list
+      if [[ ${#repodhosts} -gt 0 ]]; then
+        _values hosts $repodhosts
+      else
+        _hosts
+      fi
+    fi
+  ;;
+esac
 
 return $ret

@@ -6,7 +6,7 @@
 
 local curcontext="$curcontext" state ret=1
 
-_arguments \
+_arguments -s \
   '-F[wait for full duration]' \
   '-q[emit fewer messages]' \
   '(- *)'-h'[display help and exit]' \

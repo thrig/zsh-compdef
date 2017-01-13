@@ -2,7 +2,7 @@
 
 # an ipv6 utility over in my scripts repo under network/
 
-_arguments \
+_arguments -s \
   '(- *)-h[display help and exit]' \
   '(-r)-f[forward ipv6 address]' \
   '(-f)-r[reverse ipv6 address]' \

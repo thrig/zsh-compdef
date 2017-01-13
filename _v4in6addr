@@ -2,7 +2,7 @@
 
 # an ipv4-in-ipv6 utility over in my scripts repo under network/
 
-_arguments \
+_arguments -s \
   '(- *)-h[display help and exit]' \
   '-p[prefix length]:prefixlen:(32 40 48 56 64 96)' \
   '-t[ipv6 template]:ipv6address:' \

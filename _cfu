@@ -1,0 +1,9 @@
+#compdef cfu
+
+# just the options; completing arbitrary c code would be tricky
+_arguments \
+  '*'{--eargs=,-E}'[args to pass to executable]:eargs:' \
+  '*'{--globals=,-g}'[global defines and whatnot]:define:' \
+  '(--preserve -P)'{--preserve,-P}'[do not unlink generated files]' \
+  '(--show-code -l)'{--show-code,-l}'[show code and exit]' \
+  && return 0

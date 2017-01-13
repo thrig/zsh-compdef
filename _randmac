@@ -2,7 +2,7 @@
 
 # TODO better generate MAC, but that would require keeping track of
 # where things are, etc. (and agreement with -B option value)
-_arguments \
+_arguments -s \
   '(- *)-h[display help and exit]' \
   '-6[EUI-64 format output]' \
   '-B+[bytes in MAC address]:number:' \

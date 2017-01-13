@@ -1,9 +1,0 @@
-#compdef copyto
-
-_arguments -s                              \
-  '(- *)-h[display help]'                   \
-  '-f[force the action]'                     \
-  '-m[move instead of copy]'                  \
-  '-q[be quiet]'                               \
-  '-d[target directory]:directory:_directories' \
-  '*:file or directory:_files'

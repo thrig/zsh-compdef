@@ -1,13 +1,30 @@
-#compdef ow
+#compdef ow wv
 
-local expl ret=1
+local curcontext="$curcontext" state ret=1
 
-if [[ ${words[CURRENT-1]} = "-o" ]]; then
-  _wanted openmethod expl 'open method' compadd "$@" - \
-    $(_call_program openm ow -T open) && ret=0
-else
-  _wanted shortcut expl 'shortcut' compadd "$@" - \
-    $(_call_program scs ow -T shortcuts) && ret=0
-fi
+# --directory is not offered for completion on assumption 'wv' name or
+# an alias will be used to obtain that mode
+_arguments \
+  '(- *)'{-h,--help}'[display help and exit]' \
+  {-l,--list}'[lists the generated URL on stdout]' \
+  {-o,--open=}'[open with browser]:method:->browser' \
+  '1:url_or_abbr:->url_or_abbr' && ret=0
+
+case "$state" in
+  browser)
+    # TODO could also complete normally (most likely limited by zstyle
+    # as for feed(1)) but that's complicated so only from the browsers
+    # file for now
+    _values "browser" ${(u)${(R)${(f)"$(<~/.ow/browsers)"}:#\#*}%%[[:blank:]]*}
+  ;;
+  url_or_abbr)
+    if [[ $name == ow ]]; then
+      # this could technically also be a hostname or URL or otherwise
+      # not a shortcut but as I'm unlikely to tab those those aren't
+      # implemented
+      _values "shortcut" ${(u)${(R)${(f)"$(<~/.ow/shortcuts)"}:#\#*}%%[@[:blank:]]*}
+    fi
+  ;;
+esac
 
 return ret

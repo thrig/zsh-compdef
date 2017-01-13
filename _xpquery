@@ -3,10 +3,12 @@
 local curcontext="$curcontext" state line
 typeset -A opt_args
 
-_arguments -C -s \
+_arguments -C \
   '(- *)-h[display help]' \
   '*-n[custom namespace]:namespace:->xmlns' \
   '-p[parse method]:method:(XML HTML SGML)' \
+  '-S[xpath subquery]:subquery:' \
+  '-t[timeout]:timeout:' \
   '1: :->xpath' \
   '*: :_urls' \
   && return 0

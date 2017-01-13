@@ -1,9 +1,10 @@
 #compdef getraw
 
 _arguments -s \
+  '-d[delay]:delay:' \
   '(- *)-h[display help]' \
-  '(-o)-o[key mapping spec]:keymap:' \
-  '(-r)-r[require return key]' \
-  '(-t)-t[timeout]:timeout:' \
-  '(-n)-n[print newline]' \
+  '-n[print newline]' \
+  '-o[key mapping spec]:keymap:' \
+  '-r[require return key]' \
+  '-t[timeout]:timeout:' \
   '*:prompt message:'

@@ -93,13 +93,13 @@ _atonalutil_mode() {
 
 # XXX too much copy-n-paste hereafter
 _atonalutil_adjacent_interval_content() {
-  _arguments -s \
+  _arguments \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     {--sd,--scaledegrees}'=[degrees in the scale]:scaledegrees:(12 16)' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_basic() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -108,13 +108,13 @@ _atonalutil_basic() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_beats2set() {
-  _arguments -s \
+  _arguments \
     {--sd,--scaledegrees}'=[beats per measure]:scaledegrees:(12 16)' \
     '--rs=[record separator]:sep:' \
     '*:beatornot:(x .)'
 }
 _atonalutil_circular_permute() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -122,7 +122,7 @@ _atonalutil_circular_permute() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_combos() {
-  _arguments -s \
+  _arguments \
     {--concertfreq=,--cf=}'[concert frequency]:frequency:(409 415 422.5 440)' \
     {--concertpitch=,--cp=}'[concert pitch]:pitch:(69)' \
     '(--noflats)--flats[print notes as flats]' \
@@ -133,7 +133,7 @@ _atonalutil_combos() {
     '--scala=[scala .scl file]:filename:_files'
 }
 _atonalutil_complement() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -141,7 +141,7 @@ _atonalutil_complement() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_equivs() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -149,7 +149,7 @@ _atonalutil_equivs() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_findall() {
-  _arguments -s \
+  _arguments \
     '--exclude=[omit result if contains]:pitches:_values -s , "pitches" $pitches' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -160,7 +160,7 @@ _atonalutil_findall() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_findin() {
-  _arguments -s \
+  _arguments \
     '--exclude=[omit result if contains]:pitches:_values -s , "pitches" $pitches' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -171,11 +171,11 @@ _atonalutil_findin() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_fnums() {
-  _arguments -s \
+  _arguments \
     '--tension=[tension flag]:tension:(cope)'
 }
 _atonalutil_forte2pcs() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -183,7 +183,7 @@ _atonalutil_forte2pcs() {
     '1:fortenumber:_values "forte number" $forte_numbers'
 }
 _atonalutil_freq2pitch() {
-  _arguments -s \
+  _arguments \
     {--concertfreq=,--cf=}'[concert frequency]:frequency:(409 415 422.5 440)' \
     {--concertpitch=,--cp=}'[concert pitch]:pitch:(69)' \
     '(--noflats)--flats[print notes as flats]' \
@@ -192,14 +192,14 @@ _atonalutil_freq2pitch() {
     '--scala=[scala .scl file]:filename:_files'
 }
 _atonalutil_gen_melody() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
     '--rs=[record separator]:sep:'
 }
 _atonalutil_half_prime_form() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -208,13 +208,13 @@ _atonalutil_half_prime_form() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_interval_class_content() {
-  _arguments -s \
+  _arguments \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     {--sd,--scaledegrees}'=[degrees in the scale]:scaledegrees:(12 16)' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_intervals2pcs() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -224,13 +224,13 @@ _atonalutil_intervals2pcs() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_invariance_matrix() {
-  _arguments -s \
+  _arguments \
     '--rs=[record separator]:sep:' \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_invariants() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -238,7 +238,7 @@ _atonalutil_invariants() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_invert() { 
-  _arguments -s \
+  _arguments \
     '--axis=[inversion axis]:pitch:_values "pitch" $pitches' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -248,12 +248,12 @@ _atonalutil_invert() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_ly2pitch() { 
-  _arguments -s \
+  _arguments \
     '--relative=[pitch]:pitch:_values "pitches" $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_ly2struct() { 
-  _arguments -s \
+  _arguments \
     '--beats=[beat value]:beat:(16 8 4 2 1)' \
     {--concertfreq=,--cf=}'[concert frequency]:frequency:(409 415 422.5 440)' \
     {--concertpitch=,--cp=}'[concert pitch]:pitch:(69)' \
@@ -263,7 +263,7 @@ _atonalutil_ly2struct() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_multiply() {
-  _arguments -s \
+  _arguments \
     '--factor=[multiplication factor]:number:' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -272,7 +272,7 @@ _atonalutil_multiply() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_normal_form() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -281,24 +281,24 @@ _atonalutil_normal_form() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_notes2time() {
-  _arguments -s \
+  _arguments \
     '--beats=[beat value]:beat:(16 8 4 2 1)' \
     '--fraction=[fractional time]:fraction:' \
     '(--noms)--ms[emit time in ms]' \
     '--tempo=[beats per minute]:bpm:(40 60 66 72 88 96 108 120 144 168 196)'
 }
 _atonalutil_pcs2forte() {
-  _arguments -s \
+  _arguments \
     '*:note:_values "pitches" $pitches'
  }
 _atonalutil_pcs2intervals() {
-  _arguments -s \
+  _arguments \
     '--rs=[record separator]:sep:' \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_pitch2freq() {
-  _arguments -s \
+  _arguments \
     {--concertfreq=,--cf=}'[concert frequency]:frequency:(409 415 422.5 440)' \
     {--concertpitch=,--cp=}'[concert pitch]:pitch:(69)' \
     '--relative=[relative starting pitch]:pitch:_values "pitches" $pitches' \
@@ -306,14 +306,14 @@ _atonalutil_pitch2freq() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_pitch2intervalclass() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]'
     '1:note:_values "pitches" $pitches'
 }
 _atonalutil_pitch2ly() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -321,7 +321,7 @@ _atonalutil_pitch2ly() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_prime_form() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -330,7 +330,7 @@ _atonalutil_prime_form() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_recipe() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -338,7 +338,7 @@ _atonalutil_recipe() {
     '--rs=[record separator]:sep:'
 }
 _atonalutil_retrograde() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -347,7 +347,7 @@ _atonalutil_retrograde() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_rotate() { 
-  _arguments -s \
+  _arguments \
     '--rotate=[rotate by]:value:( )' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -357,13 +357,13 @@ _atonalutil_rotate() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_set2beats() {
-  _arguments -s \
+  _arguments \
     {--sd,--scaledegrees}'=[beats per measure]:scaledegrees:(12 16)' \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_set_complex() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
@@ -372,7 +372,7 @@ _atonalutil_set_complex() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_subsets() {
-  _arguments -s \
+  _arguments \
     '--length=[length]:value:( )' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -382,27 +382,27 @@ _atonalutil_subsets() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_tcis() {
-  _arguments -s \
+  _arguments \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_tcs() {
-  _arguments -s \
+  _arguments \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_tension() {
-  _arguments -s \
+  _arguments \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_time2notes() {
-  _arguments -s \
+  _arguments \
     '--beats=[beat value]:beat:(16 8 4 2 1)' \
     '--tempo=[beats per minute]:bpm:(40 60 66 72 88 96 108 120 144 168 196)'
 }
 _atonalutil_transpose() {
-  _arguments -s \
+  _arguments \
     '--transpose=[transposition value]:pitch:_values "pitch" $pitches' \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
@@ -412,7 +412,7 @@ _atonalutil_transpose() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_transpose_invert() {
-  _arguments -s \
+  _arguments \
     '--axis=[inversion axis]:value:( )' \
     '--transpose=[transposition value]:pitch:_values "pitch" $pitches' \
     '(--noflats)--flats[print notes as flats]' \
@@ -423,14 +423,14 @@ _atonalutil_transpose_invert() {
     '*:note:_values "pitches" $pitches'
 }
 _atonalutil_variances() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '--ly[emit notes not pitch numbers]' \
     '--rs=[record separator]:sep:'
 }
 _atonalutil_whatscalesfit() {
-  _arguments -s \
+  _arguments \
     '(--noflats)--flats[print notes as flats]' \
     '(--flats)--noflats[print notes not as flats]' \
     '1:noteorfnum:_values "forte number or pitches" $forte_numbers $pitches' \

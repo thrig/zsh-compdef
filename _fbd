@@ -2,14 +2,12 @@
 
 local ret=1
 
-_arguments -s -w \
+_arguments \
   '-a[allow DURATION fuzz around mtime time (after with -b)]:duration:' \
   '-b[allow DURATION fuzz before mtime]:duration:' \
-  '(-f)-d[specify mtime epoch]:epoch:' \
-  '(-d)-f[file to read mtime from]:file:_files' \
+  '(-f)-e[specify mtime epoch]:epoch:' \
+  '(-e)-f[file to read mtime from]:file:_files' \
   '(- *)-h[display help]' \
-  '-p[Perl expression to prune dirs with]:expression:' \
-  '-s[Perl expression to skip files with]:expression:' \
   '(-)*:filename:_files' \
   && ret=0
 

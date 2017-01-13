@@ -8,7 +8,7 @@ _arguments -s -w \
   '(-b -k -M -G)-b[incoming data in custom base]:base:' \
   '(- *)-h[display help]' \
   '(-b -k -M -G)-k[incoming data in Kilobytes]' \
-  '-m[regex to match data with]:regex:' \
+  '-n[number of digits to consider for humanization]:integer:(3 4 5 6 7)' \
   '-r[align humanized numbers to right]' \
   '(-)*:value:' \
   && ret=0

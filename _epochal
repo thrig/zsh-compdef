@@ -4,9 +4,10 @@ local ret=1
 
 # epochal only reads from stdin at this time, so only options.
 # XXX need to make -f mandatory
-_arguments \
+_arguments -s \
   '-f+[Input Format (mandatory)]:strptime format: ' \
   '-g[match multiple times per line]' \
+  '-l[line buffer stdout]' \
   '-o[output format]:strftime format: ' \
   '-s[strip non-timestamp data]' \
   '1:file:_files' \

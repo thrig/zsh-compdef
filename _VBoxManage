@@ -13,7 +13,7 @@
 # ZSH completion system.
 
 _VBoxManage() {
-  _arguments -s \
+  _arguments \
     '(-)'{-v,--version}'[print version number and exit]' \
     '(-)'{-q,--nologo}'[suppress the logo]' \
     '*::VBoxManage command:_VBoxManage_command'
@@ -101,7 +101,7 @@ _VBoxManage_n() {
 
 (( $+functions[_VBoxManage_list] )) ||
 _VBoxManage_list() {
-  _arguments -s \
+  _arguments \
     '(-)'{-l,--long}'[be verbose]' \
     '1:command:(vms runningvms ostypes hostdvds hostfloppies bridgedifs hostonlyifs dhcpservers hostinfo hostcpuids hddbackends hdds dvds floppies)'
 }
@@ -110,7 +110,7 @@ _VBoxManage_list() {
 # TODO "Syntax error: unknown option: --statistics" -- so why listed as option by vbm?
 (( $+functions[_VBoxManage_showvminfo] )) ||
 _VBoxManage_showvminfo() {
-  _arguments -s \
+  _arguments \
     '--details[Show details]' \
     '--machinereadable[Output in key=value format]' \
     '1:virtname:_VBoxManage_list_vms'
@@ -118,20 +118,20 @@ _VBoxManage_showvminfo() {
 
 (( $+functions[_VBoxManage_registervm] )) ||
 _VBoxManage_registervm() {
-  _arguments -s \
+  _arguments \
     '1:filename:_files'
 }
 
 (( $+functions[_VBoxManage_unregistervm] )) ||
 _VBoxManage_unregistervm() {
-  _arguments -s \
+  _arguments \
     '--delete' \
     '1:virtname:_VBoxManage_list_vms'
 }
 
 (( $+functions[_VBoxManage_createvm] )) ||
 _VBoxManage_createvm() {
-  _arguments -s \
+  _arguments \
     '--register' \
     '--name:virtname:_VBoxManage_n' \
     '--ostype:os type:( )' \
@@ -143,7 +143,7 @@ _VBoxManage_createvm() {
 # TODO figure out how to support the --boot<1-4> and similar options
 (( $+functions[_VBoxManage_modifyvm] )) ||
 _VBoxManage_modifyvm() {
-  _arguments -s \
+  _arguments \
     '--name:virtname:_VBoxManage_n' \
     '--ostype:os type:( )' \
     '--memory[memory size in MB]:memorysize:( )' \
@@ -203,14 +203,14 @@ _VBoxManage_modifyvm() {
 # TODO what are the [more options] the help lists?
 (( $+functions[_VBoxManage_import] )) ||
 _VBoxManage_import() {
-  _arguments -s \
+  _arguments \
     '(-)'{-n,--dry-run}'[preview]' \
     '1:ovffile:_files -g "(#i)*.ovd(-.)"'
 }
 
 (( $+functions[_VBoxManage_export] )) ||
 _VBoxManage_export() {
-  _arguments -s \
+  _arguments \
     '1:machines:( )' \
     '(-)'{-o,--output}'[output file]:ovffile:_files' \
     '--legacy09' \
@@ -226,7 +226,7 @@ _VBoxManage_export() {
 
 (( $+functions[_VBoxManage_startvm] )) ||
 _VBoxManage_startvm() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '--type[gui|vrdp|headless]:type:(gui vrdp headless)'
 }
@@ -234,20 +234,20 @@ _VBoxManage_startvm() {
 # TODO support all the various subcommands
 (( $+functions[_VBoxManage_controlvm] )) ||
 _VBoxManage_controlvm() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '2:control:(pause resume reset poweroff savestate acpipowerbutton acpisleepbutton)'
 }
 
 (( $+functions[_VBoxManage_discardstate] )) ||
 _VBoxManage_discardstate() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms'
 }
 
 (( $+functions[_VBoxManage_adoptstate] )) ||
 _VBoxManage_adoptstate() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '2:statefile:_files'
 }
@@ -255,14 +255,14 @@ _VBoxManage_adoptstate() {
 # TODO support all the various subcommands
 (( $+functions[_VBoxManage_snapshot] )) ||
 _VBoxManage_snapshot() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '2:control:(take delete restore restorecurrent edit showvminfo)'
 }
 
 (( $+functions[_VBoxManage_openmedium] )) ||
 _VBoxManage_openmedium() {
-  _arguments -s \
+  _arguments \
     '1:devicetype:(disk dvd floppy)' \
     '2:filename:_files' \
     '--type[disk only]:type:(normal immutable writethrough)' \
@@ -272,7 +272,7 @@ _VBoxManage_openmedium() {
 
 (( $+functions[_VBoxManage_closemedium] )) ||
 _VBoxManage_closemedium() {
-  _arguments -s \
+  _arguments \
     '1:devicetype:(disk dvd floppy)' \
     '2:uuid-or-file[UUID|filename]:uuid-or-file:_files' \
     '--delete'
@@ -281,7 +281,7 @@ _VBoxManage_closemedium() {
 # TODO support the various arguments to --medium
 (( $+functions[_VBoxManage_storageattach] )) ||
 _VBoxManage_storageattach() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '--storagectl[number]:storagectl:( )' \
     '--port[number]:port:( )' \
@@ -295,7 +295,7 @@ _VBoxManage_storageattach() {
 # TODO support --sataideemulation<1-4> <1-30>
 (( $+functions[_VBoxManage_storagectl] )) ||
 _VBoxManage_storagectl() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '--name:virtname:_VBoxManage_n' \
     '--add:add:(ide sata scsi floppy sas)' \
@@ -308,13 +308,13 @@ _VBoxManage_storagectl() {
 # TODO support UUID vs. filename
 (( $+functions[_VBoxManage_showhdinfo] )) ||
 _VBoxManage_showhdinfo() {
-  _arguments -s \
+  _arguments \
     '1:uuid-or-filename:_files'
 }
 
 (( $+functions[_VBoxManage_createhd] )) ||
 _VBoxManage_createhd() {
-  _arguments -s \
+  _arguments \
     '--filename:filename:_files' \
     '--size[size in MB]:size:( )' \
     '--format[default is VDI]:format:(VDI VMDK VHD)' \
@@ -327,7 +327,7 @@ _VBoxManage_createhd() {
 # TODO support UUID vs. filename
 (( $+functions[_VBoxManage_modifyhd] )) ||
 _VBoxManage_modifyhd() {
-  _arguments -s \
+  _arguments \
     '1:uuid-or-filename:_files' \
     '--type:type:(normal writethrough immutable)' \
     '--autoreset:autoreset:(on off)' \
@@ -337,7 +337,7 @@ _VBoxManage_modifyhd() {
 # TODO support UUID vs. filename
 (( $+functions[_VBoxManage_clonehd] )) ||
 _VBoxManage_clonehd() {
-  _arguments -s \
+  _arguments \
     '1:uuid-or-filename:_files' \
     '2:outputfile:_files' \
     '--format[VDI|VMDK|VHD|RAW|<other>]:format:( )' \
@@ -350,13 +350,13 @@ _VBoxManage_clonehd() {
 # TODO different exclusive modes to this command as well?
 (( $+functions[_VBoxManage_convertfromraw] )) ||
 _VBoxManage_convertfromraw() {
-  _arguments -s \
+  _arguments \
     'TODO' \
 }
 
 (( $+functions[_VBoxManage_addiscsidisk] )) ||
 _VBoxManage_addiscsidisk() {
-  _arguments -s \
+  _arguments \
     '--server[name or ip]:server:( )' \
     '--target:target:( )' \
     '--port:port:( )' \
@@ -371,7 +371,7 @@ _VBoxManage_addiscsidisk() {
 # TODO support 'global' vs UUID vs name and so on
 (( $+functions[_VBoxManage_getextradata] )) ||
 _VBoxManage_getextradata() {
-  _arguments -s \
+  _arguments \
     '1:object:(global)' \
     '2:key:(enumerate)'
 }
@@ -379,7 +379,7 @@ _VBoxManage_getextradata() {
 # TODO support 'global' vs UUID vs name and so on
 (( $+functions[_VBoxManage_setextradata] )) ||
 _VBoxManage_setextradata() {
-  _arguments -s \
+  _arguments \
     '1:object:(global)' \
     '2:key:( )' \
     '3:value:( )'
@@ -388,27 +388,27 @@ _VBoxManage_setextradata() {
 # TODO support the arguments to the various subcommands
 (( $+functions[_VBoxManage_setproperty] )) ||
 _VBoxManage_setproperty() {
-  _arguments -s \
+  _arguments \
     '1:object:(hdfolder machinefolder vrdpauthlibrary websrvauthlibrary loghistorycount)'
 }
 
 # TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_usbfilter] )) ||
 _VBoxManage_usbfilter() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }
 
 # TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_sharedfolder] )) ||
 _VBoxManage_sharedfolder() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }
 
 (( $+functions[_VBoxManage_vmstatistics] )) ||
 _VBoxManage_vmstatistics() {
-  _arguments -s \
+  _arguments \
     '1:virtname:_VBoxManage_list_vms' \
     '--reset' \
     '--pattern:pattern:( )' \
@@ -418,13 +418,13 @@ _VBoxManage_vmstatistics() {
 # TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_guestproperty] )) ||
 _VBoxManage_guestproperty() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }
 
 (( $+functions[_VBoxManage_guestcontrol] )) ||
 _VBoxManage_guestcontrol() {
-  _arguments -s \
+  _arguments \
     '1:execute:(execute)' \
     '2:virtname:_VBoxManage_list_vms' \
     '3:program:_files' \
@@ -440,19 +440,19 @@ _VBoxManage_guestcontrol() {
 # TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_metrics] )) ||
 _VBoxManage_metrics() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }
 
 (( $+functions[_VBoxManage_hostonlyif] )) ||
 _VBoxManage_hostonlyif() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }
 
 # TODO this has various exclusive subcommands
 (( $+functions[_VBoxManage_dhcpserver] )) ||
 _VBoxManage_dhcpserver() {
-  _arguments -s \
+  _arguments \
     'TODO'
 }

@@ -8,7 +8,7 @@ _arguments -s -w \
   '(-f)-d[search for directory]' \
   '(-d)-f[search for regular file]' \
   '-q[be quiet]' \
-  '-H[abort search if reach HOME]' \
+  '-H[abort search if escape HOME]' \
   '1:file:_files' \
   '2:dir:_directories' \
   && ret=0

@@ -3,7 +3,7 @@
 # For my version (there are other, incompatible, implementations (RHEL
 # has a very wacky implementation, not even Perl)).
 
-_arguments \
+_arguments -s \
   '-0[null delimit files via stdin]' \
   '(-m)-c[copy instead of rename]' \
   '-M[make directories if necessary]' \

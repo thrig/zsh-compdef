@@ -1,6 +1,6 @@
 #compdef randnum
 
-_arguments \
+_arguments -s \
   '(- *)-h[display help and exit]' \
   '-c+[count]:count:' \
   '-p+[plus or minus]:count:' \

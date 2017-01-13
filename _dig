@@ -20,7 +20,7 @@ fi
 #
 # XXX this option problematic due to - in option name, even with \hypen:
 #   '*+trusted\-key=[trusted key when chasing DNSSEC]:keyfile:_files' \
-_arguments -C -s \
+_arguments -C \
   '(- *)-h[display help]' \
   '(- *)-v[display version]' \
   '(-4 -6)-4[IPv4 lookups]' \

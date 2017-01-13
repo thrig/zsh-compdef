@@ -1,0 +1,2 @@
+#compdef mopen
+_arguments '1:file:_files' && return 0

@@ -1,6 +1,6 @@
 #compdef permcheck
 
-_arguments \
+_arguments -s \
   '(- *)-h[display help and exit]' \
   '(-h)-R[disable default read permissions test]' \
   '(-h)-X[do not recurse onto different devices]' \
