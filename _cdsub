@@ -2,6 +2,11 @@
 #
 # Modified version of _cd from ZSH 5.3.1 with specific support for the
 # `cd old new` form whereby PWD elements are provided for completion.
+# Requires something like:
+#
+#     function cdsub { builtin cd "$@" }
+#
+# set elsewhere in the ZSH configuration.
 
 _cd_options() {
   _arguments -s \
