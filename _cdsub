@@ -1,0 +1,41 @@
+#compdef cdsub
+#
+# Modified version of _cd from ZSH 5.3.1 with specific support for the
+# `cd old new` form whereby PWD elements are provided for completion.
+
+_cd_options() {
+  _arguments -s \
+  '-q[quiet, no output or use of hooks]' \
+  '-s[refuse to use paths with symlinks]' \
+  '(-P)-L[retain symbolic links ignoring CHASE_LINKS]' \
+  '(-L)-P[resolve symbolic links as CHASE_LINKS]'
+}
+
+setopt localoptions nonomatch
+
+local expl ret=1 curarg
+integer argstart=2 noopts
+
+if (( CURRENT > 1 )); then
+  # if not in command position, may have options.
+  # Careful: -<-> is not an option.
+  while [[ $words[$argstart] = -* && argstart -lt CURRENT ]]; do
+    curarg=$words[$argstart]
+    [[ $curarg = -<-> ]] && break
+    (( argstart++ ))
+    [[ $curarg = -- ]] && noopts=1 && break
+  done
+fi
+
+if [[ CURRENT -eq $((argstart+1)) ]]; then
+  # cd old new: look for old in $PWD and see what can replace it
+  local rep
+  # Get possible completions using word in position 2
+  rep=(${~PWD/$words[$argstart]/*}~$PWD(-/))
+  # Now remove all the common parts of $PWD and the completions from this
+  rep=(${${rep#${PWD%%$words[$argstart]*}}%${PWD#*$words[$argstart]}})
+  (( $#rep )) && _wanted -C replacement strings expl replacement compadd -a rep
+else
+  _values ourpwd ${(ps:/:)PWD} && ret=0
+  return ret
+fi
