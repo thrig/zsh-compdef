@@ -14,10 +14,14 @@ _arguments -s \
   '2:command: _command_names -e' \
   '*::args:->command' && ret=0
 
-if [[ -n "$state" ]]; then
-  shift 1 words
-  (( CURRENT-- ))
-  _normal && ret=0
-fi
+case "$state" in
+  command)
+    shift 1 words
+    (( CURRENT-- ))
+# TODO why no workey like in _feed?
+#   compset -n 1
+    _normal && ret=0
+  ;;
+esac
 
 return ret

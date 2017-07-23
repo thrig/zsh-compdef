@@ -24,8 +24,7 @@ case "$state" in
     fi
   ;;
   command)
-    shift 1 words
-    (( CURRENT-- ))
+    compset -n 1
     _normal && ret=0
   ;;
 esac
