@@ -1,0 +1,25 @@
+#compdef snooze
+
+local curcontext="$curcontext" state line ret=1
+typeset -A opt_args
+
+_arguments \
+  '1: :->timespec' \
+  '2: :->label' \
+  && ret=0
+
+case "$state" in
+  label)
+    _message -e label "label for the snooze"
+    break
+  ;;
+  timespec)
+    if compset -P '*[1-9]'; then
+      _values timespec 0 1 2 3 4 5 6 7 8 9 s m h d
+    else
+      _values timespec 1 2 3 4 5 6 7 8 9
+    fi
+  ;;
+esac
+
+return $ret

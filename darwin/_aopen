@@ -1,0 +1,9 @@
+#compdef aopen
+#
+# for a simple wrapper around open(1) that mostly looks like
+#   exec open -a "$appname"
+#
+# ~/.osxapps should contain applications that you want tab-completable
+local curcontext="$curcontext" state ret=1
+_arguments '1:apps:_values "apps" ${(f)"$(<~/.osxapps)"}' && ret=0
+return ret

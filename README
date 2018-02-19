@@ -1,8 +1,8 @@
-Various ZSH completion scripts. These must be located in a $fpath
-directory. For example, in ~/.zshrc set:
+various ZSH completion scripts. these must be located in a $fpath
+directory. for example in ~/.zshrc set
 
-    fpath=(~/.zsh/functions $fpath)
+    fpath[0,1]=(~/.zsh/functions/darwin ~/.zsh/functions)
     autoload -U compinit && compinit
 
-and then place whatever completions are necessary into ~/.zsh/functions,
-restart any open shells, etc.
+and then place whatever completions are necessary into ~/.zsh/functions
+(or the OS-specific dir) and then restart any open shells

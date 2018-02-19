@@ -8,22 +8,22 @@ _arguments \
   '(- *)'{-h,--help}'[display help and exit]' \
   {-l,--list}'[lists the generated URL on stdout]' \
   {-o,--open=}'[open with browser]:method:->browser' \
-  '1:url_or_abbr:->url_or_abbr' && ret=0
+  '*:something:->something' && ret=0
 
 case "$state" in
   browser)
-    # TODO could also complete normally (most likely limited by zstyle
-    # as for feed(1)) but that's complicated so only from the browsers
-    # file for now
     _values "browser" ${(u)${(R)${(f)"$(<~/.ow/browsers)"}:#\#*}%%[[:blank:]]*}
+    break
   ;;
-  url_or_abbr)
+  something)
     if [[ $name == ow ]]; then
-      # this could technically also be a hostname or URL or otherwise
-      # not a shortcut but as I'm unlikely to tab those those aren't
-      # implemented
-      _values "shortcut" ${(u)${(R)${(f)"$(<~/.ow/shortcuts)"}:#\#*}%%[@[:blank:]]*}
+      _alternative \
+        'shortcut:shortcut:_values shortcut ${(u)${(R)${(f)"$(<~/.ow/shortcuts)"}:#\#*}%%[@[:blank:]]*}' \
+        'files:filename:_files -g "*.html"'
+    elif [[ $name == wv ]]; then
+      _files
     fi
+    break
   ;;
 esac
 
