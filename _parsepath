@@ -1,18 +1,5 @@
 #compdef parsepath
 
-# TODO also _files in addition to these options
-_values -w 'option' \
-  '(group)user[username check]:user name:_users' \
-  '(user)group[group check]:group name:_groups' \
-  'file[file path to audit]:file name:_files' \
-  '+r[check if read possible]' \
-  '+w[check if write possible]' \
-  '+x[check if execute possible]' \
-  '-u[use current user for check]' \
-  '-g[use current group(s) for check]' \
-  '-R[use real not effective user/group]' \
-  '-v[verbose path list (default)]' \
-  '-i[show dev.inode numbers in output]' \
-  '-l[chase tail symlink targets]' \
-  '(- *)-h[help notes]' \
-  && return 0
+_alternative \
+    'files:filename:_files' \
+    'option:option:_values -w option '\''(group)user[username check]:user name:_users'\'' '\''(user)group[group check]:group name:_groups'\'' '\''file[file path to audit]:file name:_files'\'' '\''+r[check if read possible]'\'' '\''+w[check if write possible]'\'' '\''+x[check if execute possible]'\'' '\''-u[use current user for check]'\'' '\''-g[use current group(s) for check]'\'' '\''-R[use real not effective user/group]'\'' '\''-v[verbose path list (default)]'\'' '\''-i[show dev.inode numbers in output]'\'' '\''-l[chase tail symlink targets]'\'' '\''(- *)-h[help notes]'\''' && return 0
