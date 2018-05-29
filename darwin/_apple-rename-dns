@@ -1,0 +1,7 @@
+#compdef apple-remap-dns
+#
+# for something custom that updates the loopback DNS resolver and
+# /etc/resolv.conf with appropriate forwarding rules
+local curcontext="$curcontext" state ret=1
+_arguments '1:iface:(en0 en1)' && ret=0
+return ret
