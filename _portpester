@@ -5,8 +5,10 @@ local ret=1
 _arguments -C -s \
   '(-6)-4[family AF_INET]' \
   '(-4)-6[family AF_INET6]' \
+  '-b[delay (ms)]:delay' \
+  '-L[period (seconds)]:period' \
   '-n[do not lookup hostname]' \
-  '-v[verbose]' \
+  '-t[timeout (ms)]:timeout' \
   ':host:_hosts' \
   ':port:_ports' \
   && ret=0
