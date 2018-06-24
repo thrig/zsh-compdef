@@ -1,0 +1,9 @@
+#compdef tma
+
+#local expl ret=1
+
+if [[ CURRENT -eq 2 ]]; then
+  _values "sessions" ${(f)"$(command tmux 2> /dev/null list-sessions -F '#{session_name}')"}
+fi
+
+#return ret
