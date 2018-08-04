@@ -1,0 +1,16 @@
+#compdef nocolor
+
+local curcontext="$curcontext" state ret=1
+
+_arguments \
+  '1:command: _command_names -e' \
+  '*::args:->command' && ret=0
+
+case "$state" in
+  command)
+    compset -n 1
+    _normal && ret=0
+  ;;
+esac
+
+return ret
