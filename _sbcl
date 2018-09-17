@@ -1,0 +1,4 @@
+#compdef sbcl
+_arguments -s \
+  '--script[run script]:file:_files' \
+  && return 0
