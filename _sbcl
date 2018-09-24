@@ -4,5 +4,4 @@ _arguments -s \
   '--script[run-without-repl]:file:_files' \
   '--noinform' \
   '(--no-userinit)--userinit[user-init]:file:_files' \
-  '(--no-sysinit)--sysinit[sys-init]:file:_files' \
   && return 0
