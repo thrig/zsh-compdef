@@ -1,0 +1,17 @@
+#compdef open
+#
+# this overrides the compdef provided in ZSH
+
+local curcontext="$curcontext" state line
+
+_arguments \
+  '-a[application]:apps:->apps' \
+  '-g[the so-called background mode]' \
+  '*:files:_files' \
+  && return 0
+
+case "$state" in
+  apps)
+    _wanted mode expl 'apps' compadd ${(Qf)"$(< ~/.osxapps)"}
+  ;;
+esac
