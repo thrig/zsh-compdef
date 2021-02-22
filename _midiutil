@@ -9,10 +9,19 @@ _midiutil() {
 
 _midiutil_mode() {
   _midiutil_modes=(
+    'append:append note to a MIDI file' \
     'decompose:textify one way' \
     'dump:textify another way' \
+    'fuzz:randomize velocities, etc' \
+    'instrumentate:generate patch_change variations' \
+    'lilypondify:convert to LilyPond' \
+    'merge:merges MIDI file tracks together' \
     'nixcc:omit control changes' \
-    'patch2instrument:MIDI patch number to instrument name'
+    'patch2instrument:MIDI patch number to instrument name' \
+    'rechannel:changes the channel of the given track' \
+    'repatch:set the given patch on all events' \
+    'stats:statistics on the track events' \
+    'transpose:transposes note events'
   )
 
   if (( CURRENT == 1 )); then
@@ -25,21 +34,15 @@ _midiutil_mode() {
       curcontext="${curcontext%:*:*}:midiutil-${cmd}:"
       _call_function ret _midiutil_$cmd || _message 'no more arguments'
     else
-      _message "unknown midiutil command: $words[1]"
+      # most modes take a MIDI file or two, so
+      _arguments '*:file:_files'
     fi
     return ret
   fi
 }
 
-_midiutil_decompose() {
-  _arguments '*:file:_files'
-}
-_midiutil_dump() {
-  _arguments '*:file:_files'
-}
-_midiutil_nixcc() {
-  _arguments '*:file:_files'
-}
+# TODO support options for the various modes that have those
+
 _midiutil_patch2instrument() {
   _arguments '1:patchno:(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127)'
 }

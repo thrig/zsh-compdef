@@ -1,0 +1,9 @@
+#compdef thisdir
+
+local tdir
+tdir=${THISDIR:-~/libexec/thisdir}
+
+_arguments \
+  '1:mode:_files -W $tdir' \
+  '*:files:_files' \
+  && return 0
